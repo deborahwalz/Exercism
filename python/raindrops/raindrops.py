@@ -1,22 +1,18 @@
 def convert(number):
-    if ((number % 3 != 0) and (number % 5 != 0) and (number % 7 != 0)):
-        return str(number)
-    elif ((number % 3 == 0) and (number % 5 == 0) and (number % 7 ==0)):
-        return "PlingPlangPlong"
-    elif ((number % 3 == 0) and (number % 5 != 0) and (number % 7 != 0)):
-        return "Pling"
-    elif ((number % 3 != 0) and (number % 5 == 0) and (number % 7 != 0)):
-        return "Plang"
-    elif ((number % 3 != 0) and (number % 5 != 0) and (number % 7 == 0)):
-        return "Plong"
-    elif ((number % 3 == 0) and (number % 5 == 0) and (number % 7 != 0)):
-        return "PlingPlang"
-    elif ((number % 3 == 0) and (number % 5 != 0) and (number % 7 == 0)):
-        return "PlingPlong"
-    elif ((number % 3 != 0) and (number % 5 == 0) and (number % 7 == 0)):
-        return "PlangPlong"
 
-if __name__ == "__main__":
-    print(convert(3))
-    print(convert(5))
-    print(convert(7))
+    is_3 = (number % 3) == 0
+    is_5 = (number % 5) == 0
+    is_7 = (number % 7) == 0
+
+    s = ""
+
+    if is_3:
+        s += "Pling"
+    if is_5:
+        s += "Plang"
+    if is_7:
+        s += "Plong"
+    if not (is_3 or is_5 or is_7):
+        s=str(number)
+
+    return s
