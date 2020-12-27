@@ -8,7 +8,10 @@ def convert(number):
         s += "Plang"
     if (number % 7) == 0:
         s += "Plong"
-    if s == "":
+    if s=="":
         s=str(number)
 
     return s
+
+if __name__ == "__main__":
+    print(convert(21))
