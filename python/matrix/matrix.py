@@ -11,4 +11,4 @@ class Matrix:
 
     def column(self, index):
         """ Return a list of the columns, reading each column top-to-bottom while moving from left-to-right """
-        return list(list(zip(*self.matrix))[index -1])
+        return list(list(zip(*self.matrix))[index - 1])
