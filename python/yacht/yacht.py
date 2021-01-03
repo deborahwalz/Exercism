@@ -1,32 +1,42 @@
-"""
-This exercise stub and the test suite contain several enumerated constants.
+""" Yacht game """
 
-Since Python 2 does not have the enum module, the idiomatic way to write
-enumerated constants has traditionally been a NAME assigned to an arbitrary,
-but unique value. An integer is traditionally used because it’s memory
-efficient.
-It is a common practice to export both constants and functions that work with
-those constants (ex. the constants in the os, subprocess and re modules).
-
-You can learn more here: https://en.wikipedia.org/wiki/Enumerated_type
-"""
-
-
-# Score categories.
-# Change the values as you see fit.
-YACHT = None
-ONES = None
-TWOS = None
-THREES = None
-FOURS = None
-FIVES = None
-SIXES = None
-FULL_HOUSE = None
-FOUR_OF_A_KIND = None
-LITTLE_STRAIGHT = None
-BIG_STRAIGHT = None
-CHOICE = None
+YACHT = 0
+ONES = 1
+TWOS = 2
+THREES = 3
+FOURS = 4
+FIVES = 5
+SIXES = 6
+FULL_HOUSE = 7
+FOUR_OF_A_KIND = 8
+LITTLE_STRAIGHT = 9
+BIG_STRAIGHT = 10
+CHOICE = 11
 
 
 def score(dice, category):
-    pass
+    if category == 0:
+        return 50 if len(set(dice)) == 1 else 0
+
+    if category in range(1, 7):
+        return category * dice.count(category)
+
+    if category == 7: # Full House
+        counts = {d: dice.count(d) for d in dice}
+        if set([2, 3]).issubset(set(counts.values())):
+            return sum(dice)
+        return 0
+
+    if category == 8: # Four of a kind
+        if dice.count(sorted(dice)[1]) >= 4:
+            return 4 * sorted(dice)[1]
+        return 0
+
+    if category == 9:  # Little straight
+        return (sorted(dice) == [1, 2, 3, 4, 5]) * 30
+
+    if category == 10:  # Big straight
+        return (sorted(dice) == [2, 3, 4, 5, 6]) * 30
+
+    if category == 11:
+        return sum(dice)
