@@ -13,10 +13,7 @@ class PhoneNumber:
             .replace(")", "")
             .replace(".", "")
         )
-        if (len(number) != 10 
-            or (number[0] in ["0", "1"]) 
-            or (number[3] in ["0", "1"])
-        ):
+        if (len(number) != 10) or (number[0] in ["0", "1"]) or (number[3] in ["0", "1"]):
             raise ValueError("Number not valid!")
         return number
 
